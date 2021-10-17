@@ -1,0 +1,11 @@
+[requires]
+boost/1.69.0
+libffi/3.4.2
+fmt/8.0.1
+
+[generators]
+CMakeDeps
+CMakeToolchain
+
+[options]
+boost:shared=True
