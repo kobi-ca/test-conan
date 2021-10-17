@@ -1,5 +1,5 @@
 #include "test-conan.h"
 
 int main() {
-    test-conan();
+    test_conan();
 }

@@ -1,5 +1,5 @@
 from conans import ConanFile
-from conan.tools.cmake import CMakeToolchain, CMake
+from conan.tools.cmake import CMakeToolchain, CMakeDeps, CMake
 from conan.tools.layout import cmake_layout
 
 
@@ -21,7 +21,7 @@ class TestConanConan(ConanFile):
     default_options = {"shared": False, "fPIC": True}
 
     # Sources are located in the same place as this recipe, copy them to the recipe
-    exports_sources = "CMakeLists.txt", "src/*"
+    exports_sources = "CMakeLists.txt", "src/*", "tests/*"
 
     def config_options(self):
         if self.settings.os == "Windows":
@@ -33,6 +33,8 @@ class TestConanConan(ConanFile):
     def generate(self):
         tc = CMakeToolchain(self)
         tc.generate()
+        deps = CMakeDeps(self)
+        deps.generate()
 
     def build(self):
         cmake = CMake(self)

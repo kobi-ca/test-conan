@@ -8,11 +8,11 @@ enable_testing()
 
 find_package(Boost 1.69.0 REQUIRED)
 find_package(fmt REQUIRED)
-find_library(FFI_LIBRARY NAMES ffi REQUIRED)
+find_package(libffi REQUIRED)
 find_library(BFD_LIBRARY NAMES bfd REQUIRED)
 
 add_library(test-conan SHARED src/test-conan.cpp)
-target_link_libraries(test-conan PRIVATE fmt::fmt)
+target_link_libraries(test-conan PRIVATE fmt::fmt libffi::libffi)
 target_include_directories(test-conan INTERFACE src/)
 
 add_subdirectory(tests)
